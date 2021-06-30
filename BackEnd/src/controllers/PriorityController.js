@@ -1,4 +1,3 @@
-const { update } = require('../models/AnnotationData');
 const Annotations = require('../models/AnnotationData');
 
 
