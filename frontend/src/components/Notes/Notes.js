@@ -1,21 +1,25 @@
+import { AiTwotoneDelete, AiOutlineExclamationCircle } from 'react-icons/ai';
 
-
+import './style.css';
+import './style-priority.css';
 
 export default function Note({ data }){
     return(
         <>
-            <li className="notepad-infos">
+            <li className={data.priority ? "notepad-infos-priority" : "notepad-infos"}>
                 <div>
                     <strong>{data.title}</strong>
                         
                     <div>
-                        X
+                        <AiTwotoneDelete size="24" />
                     </div>
                 </div>
 
                 <textarea defaultValue={data.notes} ></textarea>
 
-                <span>!</span>
+                <span>
+                    <AiOutlineExclamationCircle size="24" />
+                </span>
             </li>
         </>
     )

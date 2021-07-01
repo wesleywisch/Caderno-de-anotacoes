@@ -14,8 +14,17 @@ function App() {
   return (
     <div id="app">
 
-        <Sidebar allNotes={allNotes} setAllNotes={setAllNotes} title={title} setTitle={setTitle} notes={notes} setNotes={setNotes} />
-        <Main allNotes={allNotes} setAllNotes={setAllNotes} />
+        <Sidebar 
+        allNotes={allNotes} 
+        setAllNotes={setAllNotes} 
+        title={title} 
+        setTitle={setTitle} 
+        notes={notes} 
+        setNotes={setNotes} />
+
+        <Main 
+        allNotes={allNotes} 
+        setAllNotes={setAllNotes} />
 
     </div>
   );

@@ -3,6 +3,8 @@ import './style.css';
 
 import api from '../services/api';
 
+import { RadioButton } from '../RadioButton/RadionButton';
+
 
 export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNotes }){
 
@@ -44,6 +46,7 @@ export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNote
             <label htmlFor="title">Título da Anotação</label>
             <input 
             required
+            maxLength="30"
             value={title}
             onChange={e => setTitle(e.target.value)}
             />
@@ -61,6 +64,7 @@ export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNote
           <button id="btn-submit" type="submit">Salvar</button>
         </form>
 
+        <RadioButton />
       </aside>
     )
 }
