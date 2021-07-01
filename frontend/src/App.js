@@ -1,12 +1,15 @@
-import './App.css';
+import React from 'react';
+import './global.css';
+
+import { Sidebar } from './components/Sidebar/Sidebar';
+
 
 function App() {
   return (
     <div id="app">
-      <aside>
-        
-      </aside>
 
+      <Sidebar />
+      
       <main>
 
       </main>
