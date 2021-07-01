@@ -37,6 +37,7 @@ aside form .input-block input{
     color: #666;
     border: 0;
     border-bottom: 1px solid #eee;
+    outline: none;
 }
 
 aside form .input-block textarea{

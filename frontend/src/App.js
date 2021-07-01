@@ -1,7 +1,9 @@
 import React from 'react';
 import './global.css';
+import './app.css';
 
 import { Sidebar } from './components/Sidebar/Sidebar';
+import { Main } from './components/Main/Main';
 
 
 function App() {
@@ -9,10 +11,8 @@ function App() {
     <div id="app">
 
       <Sidebar />
-      
-      <main>
+      <Main />
 
-      </main>
     </div>
   );
 }
