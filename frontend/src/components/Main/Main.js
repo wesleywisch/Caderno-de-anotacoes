@@ -2,16 +2,10 @@ import { useEffect } from 'react';
 import './style.css';
 
 import Notes from '../Notes/Notes';
-import api from '../services/api';
+import api from '../../services/api';
 
 
-export function Main({ allNotes, setAllNotes }){
-
-    async function getAllNotes(){
-        const response = await api.get('/annotations',)
-
-        setAllNotes(response.data);
-    }
+export function Main({ allNotes, setAllNotes, getAllNotes, setSelectedValue, loadNotes, selectedValue }){
 
     useEffect(() =>{
         getAllNotes();
@@ -28,7 +22,9 @@ export function Main({ allNotes, setAllNotes }){
     async function handleChengePriority(id){
         const notePriority = await api.post(`/priorities/${id}`);
 
-        if(notePriority){
+        if(notePriority && setSelectedValue !== 'all'){
+            loadNotes(selectedValue);
+        } else if(notePriority){
             getAllNotes();
         }
     }
@@ -38,7 +34,7 @@ export function Main({ allNotes, setAllNotes }){
             <ul>
                 {allNotes.map(data => (
                 <Notes 
-                key={data.id}
+                key={data._id}
                 data={data} 
                 handleDelete={handleDelete}
                 handleChengePriority={handleChengePriority}

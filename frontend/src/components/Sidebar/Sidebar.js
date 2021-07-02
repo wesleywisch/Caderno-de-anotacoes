@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import './style.css';
 
-import api from '../services/api';
+import api from '../../services/api';
 
 import { RadioButton } from '../RadioButton/RadionButton';
 
 
-export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNotes }){
+export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNotes, 
+  selectedValue, loadNotes, setSelectedValue, getAllNotes }){
 
   async function handleSubmit(event){
     event.preventDefault();
@@ -20,7 +21,13 @@ export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNote
     setTitle('');
     setNotes('');
 
-    setAllNotes([...allNotes, response.data])
+    if(selectedValue !== 'all'){
+      getAllNotes();
+    }else{
+      setAllNotes([...allNotes, response.data])
+    }
+
+    setSelectedValue('all');
   }
 
   useEffect(() =>{
@@ -34,6 +41,16 @@ export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNote
     }
     enableSubmitButton()
   },[title, notes])
+
+  function handleChange(e){
+    setSelectedValue(e.value);
+
+    if(e.checked && e.value !== 'all'){
+      loadNotes(e.value);
+    }else{
+      getAllNotes();
+    }
+  }
 
     return(
         <aside>
@@ -64,7 +81,10 @@ export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNote
           <button id="btn-submit" type="submit">Salvar</button>
         </form>
 
-        <RadioButton />
+        <RadioButton 
+        selectedValue={selectedValue}
+        handleChange={handleChange}
+        />
       </aside>
     )
 }

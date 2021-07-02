@@ -4,7 +4,7 @@ import { AiTwotoneDelete, AiOutlineExclamationCircle } from 'react-icons/ai';
 import './style.css';
 import './style-priority.css';
 
-import api from '../services/api';
+import api from '../../services/api';
 
 export default function Note({ data, handleDelete, handleChengePriority }){
     const [chengedNote, setChengedNote] = useState('');
