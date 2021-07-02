@@ -7,13 +7,13 @@ import api from '../services/api';
 
 export function Main({ allNotes, setAllNotes }){
 
+    async function getAllNotes(){
+        const response = await api.get('/annotations',)
+
+        setAllNotes(response.data);
+    }
+
     useEffect(() =>{
-        async function getAllNotes(){
-            const response = await api.get('/annotations',)
-
-            setAllNotes(response.data);
-        }
-
         getAllNotes();
     }, [])
 
@@ -25,6 +25,14 @@ export function Main({ allNotes, setAllNotes }){
         }
     }
 
+    async function handleChengePriority(id){
+        const notePriority = await api.post(`/priorities/${id}`);
+
+        if(notePriority){
+            getAllNotes();
+        }
+    }
+
     return(
         <main>
             <ul>
@@ -33,6 +41,7 @@ export function Main({ allNotes, setAllNotes }){
                 key={data.id}
                 data={data} 
                 handleDelete={handleDelete}
+                handleChengePriority={handleChengePriority}
                 />
                 ))}
             </ul>

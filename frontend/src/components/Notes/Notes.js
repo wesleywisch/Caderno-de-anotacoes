@@ -6,7 +6,7 @@ import './style-priority.css';
 
 import api from '../services/api';
 
-export default function Note({ data, handleDelete }){
+export default function Note({ data, handleDelete, handleChengePriority }){
     const [chengedNote, setChengedNote] = useState('');
 
     async function handleSave(e, notes){
@@ -53,7 +53,10 @@ export default function Note({ data, handleDelete }){
                 />
 
                 <span>
-                    <AiOutlineExclamationCircle size="24" />
+                    <AiOutlineExclamationCircle 
+                    size="24" 
+                    onClick={() => handleChengePriority(data._id)}
+                    />
                 </span>
             </li>
         </>
