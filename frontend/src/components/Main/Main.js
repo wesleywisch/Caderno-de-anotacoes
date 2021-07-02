@@ -17,11 +17,23 @@ export function Main({ allNotes, setAllNotes }){
         getAllNotes();
     }, [])
 
+    async function handleDelete(id){
+        const deletedNote = await api.delete(`/annotations/${id}`);
+
+        if(deletedNote){
+            setAllNotes(allNotes.filter(note => note._id !== id));
+        }
+    }
+
     return(
         <main>
             <ul>
                 {allNotes.map(data => (
-                <Notes data={data} />
+                <Notes 
+                key={data.id}
+                data={data} 
+                handleDelete={handleDelete}
+                />
                 ))}
             </ul>
       </main>
