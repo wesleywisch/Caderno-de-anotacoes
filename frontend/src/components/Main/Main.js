@@ -22,7 +22,7 @@ export function Main({ allNotes, setAllNotes, getAllNotes, setSelectedValue, loa
     async function handleChengePriority(id){
         const notePriority = await api.post(`/priorities/${id}`);
 
-        if(notePriority && setSelectedValue !== 'all'){
+        if(notePriority && selectedValue !== 'all'){
             loadNotes(selectedValue);
         } else if(notePriority){
             getAllNotes();
