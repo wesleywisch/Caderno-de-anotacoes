@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import './style.css';
 
 import Notes from '../Notes/Notes';
 import api from '../../services/api';
 
+import { ContextAll } from '../../provider/ContextAll';
 
-export function Main({ allNotes, setAllNotes, getAllNotes, setSelectedValue, loadNotes, selectedValue }){
+export function Main(){
+    const { selectedValue, allNotes, setAllNotes } = useContext(ContextAll)
+
+    const { getAllNotes, loadNotes } = useContext(ContextAll)
 
     useEffect(() =>{
         getAllNotes();

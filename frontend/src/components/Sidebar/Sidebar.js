@@ -1,13 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './style.css';
 
 import api from '../../services/api';
 
+import { ContextAll } from '../../provider/ContextAll';
+
 import { RadioButton } from '../RadioButton/RadionButton';
 
 
-export function Sidebar({ allNotes, setAllNotes, title, setTitle, notes, setNotes, 
-  selectedValue, loadNotes, setSelectedValue, getAllNotes }){
+export function Sidebar(){
+    const [ title, setTitle ] = useState('');
+    const [ notes, setNotes ] = useState('');
+
+    const { selectedValue, setSelectedValue, allNotes, setAllNotes  } = useContext(ContextAll)
+    const { getAllNotes, loadNotes } = useContext(ContextAll)
 
   async function handleSubmit(event){
     event.preventDefault();
