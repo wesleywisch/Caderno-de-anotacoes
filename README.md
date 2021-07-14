@@ -18,7 +18,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ```
 # Clone este repositório
-$ git https://github.com/wesleywisch/Caderno-de-anotacoes.git
+$ git clone https://github.com/wesleywisch/Caderno-de-anotacoes.git
 
 # Acesse a pasta do projeto no terminal
 $ cd BackEnd
